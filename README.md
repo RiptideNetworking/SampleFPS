@@ -8,7 +8,7 @@
 
 This is the source code for my [Riptide tutorial series](https://youtube.com/playlist?list=PLXkn83W0Qkfn3qF7NU4OEtVwOD6U2wphJ) on YouTube, where we build this multiplayer first person shooter to demonstrate how [RiptideNetworking](https://github.com/tom-weiland/RiptideNetworking) works. Check out [part 1](https://youtu.be/6kWNZOFcFQw).
 
-There's a branch containing the code for each videos in the series.
+There's a branch containing the code for each video in the series.
 
 **Please DO NOT create issues for help with resolving any problems you encounter while following along with the videos—use [the Discord server](https://discord.com/invite/tomweiland) for that. Issues should be reserved for bugs that are present within the code of this repository!**
 
