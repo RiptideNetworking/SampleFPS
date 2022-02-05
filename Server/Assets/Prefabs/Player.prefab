@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2174774194742224658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8119067168557524152}
+  m_Layer: 0
+  m_Name: CamProxy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8119067168557524152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2174774194742224658}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5262112718532205853}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5262112718409594922
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +120,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5262112718532205853}
+  - component: {fileID: 5268977608453488412}
   - component: {fileID: 5262112718532205826}
+  - component: {fileID: 5539624819027065276}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -110,9 +142,28 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5262112718409594917}
+  - {fileID: 8119067168557524152}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &5268977608453488412
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5262112718532205827}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.8
+  m_Radius: 0.4
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!114 &5262112718532205826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,3 +176,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651224d342e573943af597adbe522a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 5539624819027065276}
+--- !u!114 &5539624819027065276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5262112718532205827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5a101cbdaf5274599ba2b5567265be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 5262112718532205826}
+  controller: {fileID: 5268977608453488412}
+  camProxy: {fileID: 8119067168557524152}
+  gravity: -9.81
+  movementSpeed: 5
+  jumpHeight: 3

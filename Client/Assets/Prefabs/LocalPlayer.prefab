@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 1602291133350292177}
   - component: {fileID: 7124268479136895931}
   - component: {fileID: 3721595354957508877}
+  - component: {fileID: 612008199755633700}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -198,6 +199,21 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &612008199755633700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404251199295210968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2e4c784e58b9543bb33acdd69faf48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 3888146995961639306}
+  sensitivity: 100
+  clampAngle: 85
 --- !u!1 &8559740014325515606
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4962057517168989917}
   - component: {fileID: 3888146995961639306}
+  - component: {fileID: 6267341411843650629}
   m_Layer: 0
   m_Name: LocalPlayer
   m_TagString: Untagged
@@ -243,3 +260,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e673d7d9a27ce148af85d77587aec79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camTransform: {fileID: 4420057598451644344}
+--- !u!114 &6267341411843650629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8559740014325515606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b34fa28b8e939b488182849b987358c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 4420057598451644344}
