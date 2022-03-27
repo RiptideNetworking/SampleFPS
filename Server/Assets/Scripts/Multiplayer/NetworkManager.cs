@@ -4,14 +4,27 @@ using UnityEngine;
 
 public enum ServerToClientId : ushort
 {
-    playerSpawned = 1,
+    activeScene = 1,
+    playerSpawned,
     playerMovement,
+    playerHealthChanged,
+    playerActiveWeaponUpdated,
+    playerAmmoChanged,
+    playerDied,
+    playerRespawned,
+    projectileSpawned,
+    projectileMovement,
+    projectileCollided,
+    projectileHitmarker,
 }
 
 public enum ClientToServerId : ushort
 {
     name = 1,
     input,
+    switchActiveWeapon,
+    primaryUse,
+    reload,
 }
 
 public class NetworkManager : MonoBehaviour
@@ -46,11 +59,22 @@ public class NetworkManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
 
+#if UNITY_EDITOR
         RiptideLogger.Initialize(Debug.Log, Debug.Log, Debug.LogWarning, Debug.LogError, false);
+#else
+        System.Console.Title = "Server";
+        System.Console.Clear();
+        Application.SetStackTraceLogType(UnityEngine.LogType.Log, StackTraceLogType.None);
+        RiptideLogger.Initialize(Debug.Log, true);
+#endif
 
         Server = new Server();
-        Server.Start(port, maxClientCount);
+        Server.ClientConnected += NewPlayerConnected;
         Server.ClientDisconnected += PlayerLeft;
+
+        Server.Start(port, maxClientCount);
+
+        GameLogic.Singleton.LoadScene(1);
     }
 
     private void FixedUpdate()
@@ -61,6 +85,11 @@ public class NetworkManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         Server.Stop();
+    }
+
+    private void NewPlayerConnected(object sender, ServerClientConnectedEventArgs e)
+    {
+        GameLogic.Singleton.PlayerCountChanged(e.Client.Id);
     }
 
     private void PlayerLeft(object sender, ClientDisconnectedEventArgs e)

@@ -1,14 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimationManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private float playerMoveSpeed;
+    [SerializeField] private float playerMoveSpeed = 5;
 
     private float sprintThreshold;
     private Vector3 lastPosition;
+
+    private void OnValidate()
+    {
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>();
+    }
 
     private void Start()
     {

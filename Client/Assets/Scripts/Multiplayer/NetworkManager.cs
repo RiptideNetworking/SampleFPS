@@ -5,14 +5,27 @@ using UnityEngine;
 
 public enum ServerToClientId : ushort
 {
-    playerSpawned = 1,
+    activeScene = 1,
+    playerSpawned,
     playerMovement,
+    playerHealthChanged,
+    playerActiveWeaponUpdated,
+    playerAmmoChanged,
+    playerDied,
+    playerRespawned,
+    projectileSpawned,
+    projectileMovement,
+    projectileCollided,
+    projectileHitmarker,
 }
 
 public enum ClientToServerId : ushort
 {
     name = 1,
     input,
+    switchActiveWeapon,
+    primaryUse,
+    reload,
 }
 
 public class NetworkManager : MonoBehaviour
@@ -90,5 +103,7 @@ public class NetworkManager : MonoBehaviour
         UIManager.Singleton.BackToMain();
         foreach (Player player in Player.list.Values)
             Destroy(player.gameObject);
+
+        GameLogic.Singleton.UnloadActiveScene();
     }
 }
