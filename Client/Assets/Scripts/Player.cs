@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private PlayerAnimationManager animationManager;
     [SerializeField] private Transform camTransform;
+    [SerializeField] private Interpolator interpolator;
 
     [Header("Team Colors")]
     [SerializeField] private Material none;
@@ -52,9 +53,9 @@ public class Player : MonoBehaviour
         list.Remove(Id);
     }
 
-    private void Move(Vector3 newPosition, Vector3 forward)
+    private void Move(ushort tick, bool isTeleport, Vector3 newPosition, Vector3 forward)
     {
-        transform.position = newPosition;
+        interpolator.NewUpdate(tick, isTeleport, newPosition);
         
         if (!IsLocal)
             camTransform.forward = forward;
@@ -104,7 +105,7 @@ public class Player : MonoBehaviour
             player.IsLocal = false;
         }
 
-        player.name = $"Player {id} (username)";
+        player.name = $"Player {id} ({username})";
         player.Id = id;
         player.username = username;
 
@@ -143,7 +144,7 @@ public class Player : MonoBehaviour
     private static void PlayerMovement(Message message)
     {
         if (list.TryGetValue(message.GetUShort(), out Player player))
-            player.Move(message.GetVector3(), message.GetVector3());
+            player.Move(message.GetUShort(), message.GetBool(), message.GetVector3(), message.GetVector3());
     }
 
     [MessageHandler((ushort)ServerToClientId.playerHealthChanged)]

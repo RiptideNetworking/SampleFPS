@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5672468269109228419}
   - component: {fileID: 5827523942248420228}
   - component: {fileID: 1355182474276446409}
+  - component: {fileID: 8040419349282800408}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -53,6 +54,7 @@ MonoBehaviour:
   weaponManager: {fileID: 5827523942248420228}
   animationManager: {fileID: 1355182474276446409}
   camTransform: {fileID: 653839953022976436}
+  interpolator: {fileID: 8040419349282800408}
   none: {fileID: 2100000, guid: f7a20664c84baee449b155ca005ffea5, type: 2}
   green: {fileID: 2100000, guid: 0f76652fecb96fa40bfe0f846293d561, type: 2}
   orange: {fileID: 2100000, guid: 93bcd38383a029f4cb216b2ba26b3d11, type: 2}
@@ -70,13 +72,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponModels: {fileID: 3297060883765068013}
   pistolModel: {fileID: 6923129423264488753}
-  pistolAudioSource: {fileID: 0}
+  pistolAudioSource: {fileID: 3563147672454338866}
   pistolMuzzleFlash: {fileID: 2398636301316608847}
   teleporterModel: {fileID: 3108182448900568007}
-  teleporterAudioSource: {fileID: 0}
+  teleporterAudioSource: {fileID: 1435280594432475209}
   teleporterMuzzleFlash: {fileID: 8662772903640525172}
   laserModel: {fileID: 4691083080899235190}
-  laserAudioSource: {fileID: 0}
+  laserAudioSource: {fileID: 4979878903797511832}
   laserMuzzleFlash: {fileID: 4458622047772516900}
 --- !u!114 &1355182474276446409
 MonoBehaviour:
@@ -92,6 +94,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1293043248866126490}
   playerMoveSpeed: 5
+--- !u!114 &8040419349282800408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974907207109068639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d05a05a427861314fa332fe296b48837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeElapsed: 0
+  timeToReachTarget: 0.05
+  movementThreshold: 0.05
 --- !u!1 &2610529555280746621
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +237,11 @@ PrefabInstance:
 --- !u!4 &1706750968402322756 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 506548452879939663, guid: 6dee168ac01b9ec42aa0a9281e287a47, type: 3}
+  m_PrefabInstance: {fileID: 1200217911378189579}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &4979878903797511832 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6175581530410052499, guid: 6dee168ac01b9ec42aa0a9281e287a47, type: 3}
   m_PrefabInstance: {fileID: 1200217911378189579}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4691083080899235190 stripped
@@ -397,6 +419,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 506548452879939663, guid: 008780ac8c86e4c4abda097501c419f1, type: 3}
   m_PrefabInstance: {fileID: 5070831860916235226}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1435280594432475209 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6175581530410052499, guid: 008780ac8c86e4c4abda097501c419f1, type: 3}
+  m_PrefabInstance: {fileID: 5070831860916235226}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3108182448900568007 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7889547669959825437, guid: 008780ac8c86e4c4abda097501c419f1, type: 3}
@@ -471,6 +498,11 @@ PrefabInstance:
 --- !u!4 &1963464530321234535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7012171748821757337, guid: af7656f4ccbdfd244a5404414e505ca6, type: 3}
+  m_PrefabInstance: {fileID: 8822443487617923070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &3563147672454338866 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5412564197039550156, guid: af7656f4ccbdfd244a5404414e505ca6, type: 3}
   m_PrefabInstance: {fileID: 8822443487617923070}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6923129423264488753 stripped

@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool[] inputs;
     private float yVelocity;
+    private bool didTeleport;
 
     private void OnValidate()
     {
@@ -75,6 +76,8 @@ public class PlayerMovement : MonoBehaviour
         controller.enabled = false;
         transform.position = toPosition;
         controller.enabled = isEnabled;
+
+        didTeleport = true;
     }
 
     private void Move(Vector2 inputDirection, bool jump, bool sprint)
@@ -113,10 +116,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void SendMovement()
     {
+        if (NetworkManager.Singleton.CurrentTick % 2 != 0)
+            return;
+
         Message message = Message.Create(MessageSendMode.unreliable, ServerToClientId.playerMovement);
         message.AddUShort(player.Id);
+        message.AddUShort(NetworkManager.Singleton.CurrentTick);
+        message.AddBool(didTeleport);
         message.AddVector3(transform.position);
         message.AddVector3(camProxy.forward);
         NetworkManager.Singleton.Server.SendToAll(message);
+
+        didTeleport = false;
     }
 }
