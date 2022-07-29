@@ -48,7 +48,9 @@ jobs:
           unityVersion: 2020.3.25f1
           projectPath: Client
           targetPlatform: StandaloneWindows64 
-          versioning: Custom
+          versioning: Semantic
+          buildName: Client
+          bulidsPath: build
 
       # Output 
       - uses: actions/upload-artifact@v2
