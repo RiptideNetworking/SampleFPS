@@ -1,0 +1,57 @@
+name: Server Build
+
+on:
+  pull_request: {}
+  push: { branches: [stable] }
+  workflow_dispatch: {}
+
+
+env:
+  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+  # Professinal License
+  # UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+  # Personal License
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
+jobs:
+  build:
+    name: Build my project
+    runs-on: ubuntu-latest
+    steps:
+
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+    
+      # Cache
+      - uses: actions/cache@v2
+        with:
+          path: Server/Library
+          key: Library-${{ hashFiles('Server/Assets/**', 'Server/Packages/**', 'Server/ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+      # Test
+      - name: Run tests
+        uses: game-ci/unity-test-runner@v2
+        with:
+          unityVersion: 2020.3.25f1
+          projectPath: Server
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build
+      - name: Build project
+        uses: game-ci/unity-builder@v2
+        with:
+          unityVersion: 2020.3.25f1
+          projectPath: Server
+          targetPlatform: StandaloneWindows64 
+          versioning: Custom
+
+      # Output 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Server
+          path: build
