@@ -1,4 +1,4 @@
-name: Build
+name: Client Build
 
 on:
   pull_request: {}
