@@ -48,7 +48,7 @@ jobs:
           unityVersion: 2020.3.25f1
           projectPath: Client
           targetPlatform: StandaloneWindows64 
-          versioning: Semantic
+          versioning: Tag
           buildName: Client
           bulidsPath: build
 
