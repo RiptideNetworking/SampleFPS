@@ -48,7 +48,10 @@ jobs:
           unityVersion: 2020.3.25f1
           projectPath: Server
           targetPlatform: StandaloneWindows64 
-          versioning: Custom
+          versioning: Semantic
+          customParameters: -EnableHeadlessMode
+          buildName: Server
+          buildsPath: build
 
       # Output 
       - uses: actions/upload-artifact@v2
