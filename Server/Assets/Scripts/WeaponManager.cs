@@ -1,4 +1,4 @@
-using RiptideNetworking;
+using Riptide;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
@@ -70,7 +70,7 @@ public class WeaponManager : MonoBehaviour
 
     private void SendActiveWeaponUpdate(WeaponType type)
     {
-        Message message = Message.Create(MessageSendMode.reliable, ServerToClientId.playerActiveWeaponUpdated);
+        Message message = Message.Create(MessageSendMode.Reliable, ServerToClientId.playerActiveWeaponUpdated);
         message.AddUShort(player.Id);
         message.AddByte((byte)type);
         NetworkManager.Singleton.Server.SendToAll(message);

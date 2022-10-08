@@ -1,4 +1,4 @@
-using RiptideNetworking;
+using Riptide;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -95,14 +95,14 @@ public class GameLogic : MonoBehaviour
 
     private void SendActiveScene(ushort toClientId)
     {
-        Message message = Message.Create(MessageSendMode.reliable, ServerToClientId.activeScene);
+        Message message = Message.Create(MessageSendMode.Reliable, ServerToClientId.activeScene);
         message.AddByte(activeScene);
         NetworkManager.Singleton.Server.Send(message, toClientId);
     }
 
     private void SendNewActiveScene()
     {
-        Message message = Message.Create(MessageSendMode.reliable, ServerToClientId.activeScene);
+        Message message = Message.Create(MessageSendMode.Reliable, ServerToClientId.activeScene);
         message.AddByte(activeScene);
         NetworkManager.Singleton.Server.SendToAll(message);
     }

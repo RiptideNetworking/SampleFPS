@@ -1,5 +1,5 @@
-using RiptideNetworking;
-using RiptideNetworking.Utils;
+using Riptide;
+using Riptide.Utils;
 using System;
 using UnityEngine;
 
@@ -96,7 +96,7 @@ public class NetworkManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Client.Tick();
+        Client.Update();
         ServerTick++;
     }
 

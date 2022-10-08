@@ -1,4 +1,4 @@
-using RiptideNetworking;
+using Riptide;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -111,12 +111,12 @@ public class Player : MonoBehaviour
     #region Messages
     private void SendSpawned()
     {
-        NetworkManager.Singleton.Server.SendToAll(AddSpawnData(Message.Create(MessageSendMode.reliable, ServerToClientId.playerSpawned)));
+        NetworkManager.Singleton.Server.SendToAll(AddSpawnData(Message.Create(MessageSendMode.Reliable, ServerToClientId.playerSpawned)));
     }
 
     private void SendSpawned(ushort toClientId)
     {
-        NetworkManager.Singleton.Server.Send(AddSpawnData(Message.Create(MessageSendMode.reliable, ServerToClientId.playerSpawned)), toClientId);
+        NetworkManager.Singleton.Server.Send(AddSpawnData(Message.Create(MessageSendMode.Reliable, ServerToClientId.playerSpawned)), toClientId);
     }
 
     private Message AddSpawnData(Message message)
@@ -130,14 +130,14 @@ public class Player : MonoBehaviour
 
     private void SendHealthChanged()
     {
-        Message message = Message.Create(MessageSendMode.reliable, ServerToClientId.playerHealthChanged);
+        Message message = Message.Create(MessageSendMode.Reliable, ServerToClientId.playerHealthChanged);
         message.AddFloat(health);
         NetworkManager.Singleton.Server.Send(message, Id);
     }
 
     private void SendDied()
     {
-        Message message = Message.Create(MessageSendMode.reliable, ServerToClientId.playerDied);
+        Message message = Message.Create(MessageSendMode.Reliable, ServerToClientId.playerDied);
         message.AddUShort(Id);
         message.AddVector3(transform.position);
         NetworkManager.Singleton.Server.SendToAll(message);
@@ -145,7 +145,7 @@ public class Player : MonoBehaviour
 
     private void SendRespawned()
     {
-        Message message = Message.Create(MessageSendMode.reliable, ServerToClientId.playerRespawned);
+        Message message = Message.Create(MessageSendMode.Reliable, ServerToClientId.playerRespawned);
         message.AddUShort(Id);
         message.AddVector3(transform.position);
         NetworkManager.Singleton.Server.SendToAll(message);

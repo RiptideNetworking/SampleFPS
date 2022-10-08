@@ -1,4 +1,4 @@
-using RiptideNetworking;
+using Riptide;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     #region Messages
     private void SendInput()
     {
-        Message message = Message.Create(MessageSendMode.unreliable, ClientToServerId.input);
+        Message message = Message.Create(MessageSendMode.Unreliable, ClientToServerId.input);
         message.AddBools(inputs, false);
         message.AddVector3(camTransform.forward);
         NetworkManager.Singleton.Client.Send(message);
@@ -71,19 +71,19 @@ public class PlayerController : MonoBehaviour
 
     private void SendSwitchActiveWeapon(WeaponType newType)
     {
-        Message message = Message.Create(MessageSendMode.reliable, ClientToServerId.switchActiveWeapon);
+        Message message = Message.Create(MessageSendMode.Reliable, ClientToServerId.switchActiveWeapon);
         message.AddByte((byte)newType);
         NetworkManager.Singleton.Client.Send(message);
     }
 
     private void SendPrimaryUse()
     {
-        NetworkManager.Singleton.Client.Send(Message.Create(MessageSendMode.reliable, ClientToServerId.primaryUse));
+        NetworkManager.Singleton.Client.Send(Message.Create(MessageSendMode.Reliable, ClientToServerId.primaryUse));
     }
 
     private void SendReload()
     {
-        NetworkManager.Singleton.Client.Send(Message.Create(MessageSendMode.reliable, ClientToServerId.reload));
+        NetworkManager.Singleton.Client.Send(Message.Create(MessageSendMode.Reliable, ClientToServerId.reload));
     }
     #endregion
 }

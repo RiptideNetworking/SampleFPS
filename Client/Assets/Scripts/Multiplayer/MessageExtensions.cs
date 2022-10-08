@@ -1,4 +1,4 @@
-using RiptideNetworking;
+using Riptide;
 using UnityEngine;
 
 public static class MessageExtensions

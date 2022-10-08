@@ -1,4 +1,4 @@
-using RiptideNetworking;
+using Riptide;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -119,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
         if (NetworkManager.Singleton.CurrentTick % 2 != 0)
             return;
 
-        Message message = Message.Create(MessageSendMode.unreliable, ServerToClientId.playerMovement);
+        Message message = Message.Create(MessageSendMode.Unreliable, ServerToClientId.playerMovement);
         message.AddUShort(player.Id);
         message.AddUShort(NetworkManager.Singleton.CurrentTick);
         message.AddBool(didTeleport);

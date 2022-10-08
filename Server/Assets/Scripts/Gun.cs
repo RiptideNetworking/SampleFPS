@@ -1,4 +1,4 @@
-using RiptideNetworking;
+using Riptide;
 using UnityEngine;
 
 public enum WeaponType : byte
@@ -61,7 +61,7 @@ public class Gun : MonoBehaviour
 
     private void SendAmmoUpdated()
     {
-        Message message = Message.Create(MessageSendMode.reliable, ServerToClientId.playerAmmoChanged);
+        Message message = Message.Create(MessageSendMode.Reliable, ServerToClientId.playerAmmoChanged);
         message.AddByte((byte)type);
         message.AddByte(loadedAmmo);
         message.AddUShort(totalAmmo);

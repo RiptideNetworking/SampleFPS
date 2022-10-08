@@ -1,4 +1,4 @@
-using RiptideNetworking;
+using Riptide;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -133,7 +133,7 @@ public class Projectile : MonoBehaviour
     #region Messages
     private void SendSpawned()
     {
-        Message message = Message.Create(MessageSendMode.reliable, ServerToClientId.projectileSpawned);
+        Message message = Message.Create(MessageSendMode.Reliable, ServerToClientId.projectileSpawned);
         message.AddUShort(id);
         message.AddByte((byte)type);
         message.AddUShort(shooter.Id);
@@ -144,7 +144,7 @@ public class Projectile : MonoBehaviour
 
     private void SendMovement()
     {
-        Message message = Message.Create(MessageSendMode.unreliable, ServerToClientId.projectileMovement);
+        Message message = Message.Create(MessageSendMode.Unreliable, ServerToClientId.projectileMovement);
         message.AddUShort(id);
         message.AddVector3(transform.position);
         NetworkManager.Singleton.Server.SendToAll(message);
@@ -152,7 +152,7 @@ public class Projectile : MonoBehaviour
 
     private void SendCollided()
     {
-        Message message = Message.Create(MessageSendMode.reliable, ServerToClientId.projectileCollided);
+        Message message = Message.Create(MessageSendMode.Reliable, ServerToClientId.projectileCollided);
         message.AddUShort(id);
         message.AddVector3(transform.position);
         NetworkManager.Singleton.Server.SendToAll(message);
@@ -160,7 +160,7 @@ public class Projectile : MonoBehaviour
 
     private void SendHitmarker()
     {
-        Message message = Message.Create(MessageSendMode.reliable, ServerToClientId.projectileHitmarker);
+        Message message = Message.Create(MessageSendMode.Reliable, ServerToClientId.projectileHitmarker);
         NetworkManager.Singleton.Server.Send(message, shooter.Id);
     }
     #endregion

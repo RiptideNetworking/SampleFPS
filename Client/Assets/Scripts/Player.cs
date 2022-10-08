@@ -1,4 +1,4 @@
-using RiptideNetworking;
+using Riptide;
 using System.Collections.Generic;
 using UnityEngine;
 
