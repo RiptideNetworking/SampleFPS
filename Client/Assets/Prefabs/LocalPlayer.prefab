@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8043274276299530637}
-  sensitivity: 100
+  sensitivity: 1.5
   clampAngle: 85
 --- !u!1 &3215645383623742801
 GameObject:
